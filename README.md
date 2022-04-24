@@ -1,10 +1,29 @@
-# Merkel-Tree
-package com.merkle.tree.implementation;
+Introduction to Merkle Tree
+Merkle Tree
+       Merkle tree is a tree data structure with leaf nodes and non leaf nodes. It also known as Hash tree. The reason behind it is it only stores the hashes in its nodes instead of data. In its leaf nodes, it will store the hash of the data. Non leaf nodes contain the hash of its children
+Hash Functions
+       A hash or hash-value or a message digest is an array of fixed size random characters  generated when a message  or data is passed through an a  Mathematical algorithm. 
+These mathematical algorithms are one way functions meaning, we can generate the output from input but not vice-versa. It has to be deterministic, meaning the input should always maps to same output regardless of the number of times it passed through it.  
+Y(I) = O, where
+Y  = Our hash function
+I    = Input 
+O  =  Output. 
+Even a small change in the input produces completely output. This property is also known as avalanche effect.
+Y(I') = O' 
+These mathematical algorithms with the above properties are also known as Hash Functions.
 
+Architecture of Merkle Tree
+ 
+
+Merkle Tree Implementation in Java:
+In this example implementation, We are going to implement binary merkle tree. As the first step, let's define the node. Like a regular tree, it has a  data field to store the hash and left and right pointers to point to left  child and right child of the binary tree.
+
+
+Code:
+package com.merkle.tree.implementation;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
-
 public class MerkleTree {
 
     public static Node generateTree(ArrayList<String> dataBlocks) {
@@ -87,3 +106,5 @@ public class MerkleTree {
         printLevelOrderTraversal(root);
     }
 }
+Reference:
+ https://www.pranaybathini.com/2021/05/merkle-tree.html
