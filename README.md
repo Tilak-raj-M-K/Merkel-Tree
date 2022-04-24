@@ -103,9 +103,10 @@ public class MerkleTree {
         dataBlocks.add("God of thunder");
         dataBlocks.add("Doctor strange");
         Node root = generateTree(dataBlocks);
-        printLevelOrderTraversal(root);
+        printLevelOrderTraversal(root); 
+        }
     }
-}
+
 
 
 Reference:
