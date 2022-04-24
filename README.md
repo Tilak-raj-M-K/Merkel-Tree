@@ -106,5 +106,7 @@ public class MerkleTree {
         printLevelOrderTraversal(root);
     }
 }
+
+
 Reference:
  https://www.pranaybathini.com/2021/05/merkle-tree.html
