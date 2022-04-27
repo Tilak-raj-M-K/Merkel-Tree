@@ -1,4 +1,5 @@
-Introduction to Merkle Tree
+Introduction to Merkle Tree :       
+
 Merkle Tree
        Merkle tree is a tree data structure with leaf nodes and non leaf nodes. It also known as Hash tree. The reason behind it is it only stores the hashes in its nodes instead of data. In its leaf nodes, it will store the hash of the data. Non leaf nodes contain the hash of its children
 Hash Functions
@@ -17,6 +18,9 @@ Architecture of Merkle Tree
 
 Merkle Tree Implementation in Java:
 In this example implementation, We are going to implement binary merkle tree. As the first step, let's define the node. Like a regular tree, it has a  data field to store the hash and left and right pointers to point to left  child and right child of the binary tree.
+
+<img width="449" alt="image" src="https://user-images.githubusercontent.com/79223934/165556830-ea724975-623a-4f98-803c-ca1a5823481a.png">
+
 
 
 Code:
