@@ -22,15 +22,84 @@ In this example implementation, We are going to implement binary merkle tree. As
 <img width="449" alt="image" src="https://user-images.githubusercontent.com/79223934/165556830-ea724975-623a-4f98-803c-ca1a5823481a.png">
 
 
+In this example implementation, We are going to implement binary merkle tree. As the first step, let's define the node. Like a regular tree, it has a  data field to store the hash and left and right pointers to point to left  child and right child of the binary tree. 
 
+
+    public class Node {
+
+    private Node left;
+    private Node right;
+    private String hash;
+
+    public Node(Node left, Node right, String hash) {
+        this.left = left;
+        this.right = right;
+        this.hash = hash;
+    }
+
+    public Node getLeft() {
+        return left;
+    }
+
+    public void setLeft(Node left) {
+        this.left = left;
+    }
+
+    public Node getRight() {
+        return right;
+    }
+
+    public void setRight(Node right) {
+        this.right = right;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    } 
+    }
+    
+We going to use the below dependency for the java implementations of the cryptography algorithms.  However, we are going to use keccak 256 for our implementation.
+
+
+        <!--The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.68</version>
+        </dependency>
+        
+        
+Keccak 256 is part of SHA 3 (Secure Hash Algorithm) standard.
+
+    import org.bouncycastle.jcajce.provider.digest.Keccak;
+    import org.bouncycastle.util.encoders.Hex;
+
+    import java.nio.charset.StandardCharsets;
+
+    public class HashAlgorithm {
+
+    public static String generateHash(String originalString) {
+        Keccak.Digest256 digest256 = new Keccak.Digest256();
+        byte[] hashedByteArray = digest256.digest(
+                originalString.getBytes(StandardCharsets.UTF_8));
+        return new String(Hex.encode(hashedByteArray));
+    }
+    }
+    
+We are going to implement a complete binary tree. In case of odd nodes, we will consider the odd node twice to generate the hash of its parent.  
 Code:
-package com.merkle.tree.implementation;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-public class MerkleTree {
+        
+      package com.merkle.tree.implementation;    
+      import java.util.ArrayList;    
+      import java.util.LinkedList;    
+      import java.util.Queue;       
+      public class MerkleTree {
 
-    public static Node generateTree(ArrayList<String> dataBlocks) {
+      public static Node generateTree(ArrayList<String> dataBlocks) {
         ArrayList<Node> childNodes = new ArrayList<>();
 
         for (String message : dataBlocks) {
